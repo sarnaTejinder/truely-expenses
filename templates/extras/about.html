@@ -1,12 +1,70 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% load static %}
 {% block title %}
 About
 {% endblock %}
 {% block content %}
-<div class="card">
-    <div class="card-body">
-    ABOUT US
+<div class="container mt-4 mb-4">
+    <div class="row">
+        <div class="col-md-10">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="/">Expenses</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        About Page
+                    </li>
+                </ol>
+            </nav>
+        </div>
+
     </div>
-  </div>
-{%endblock%}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10">
+                <h2 class="h2 mb-3">About this Project</h2>
+                <p class="container text-muted text-justify h4 mb-3">
+                    When I started this project, the first idea was to make a project that will make the lives of
+                    businessmen easier by giving them insights on their sales. But as the project grew it has softly
+                    turned it into a personal expenses management app. Future scope of this project is to continue to
+                    add new features that help the user to properly focus on themselves and increase their productivity
+                    and profitability.
+                </p>
+                <h2 class="h2 mb-3">Introduction</h2>
+                <p class="container text-muted text-justify h4 mb-3">
+                    This is a Summer Training Project. I have done my course from Coursera - 6 weeks starting from 22nd
+                    July to 2nd sept.
+                <h3 class="h3 mb-3">Course Certificate</h3>
+                <img src="{% static 'img/certificate.png' %}" class="img-fluid" alt="Course Certificate">
+                </p>
+                <h2 class="h2 mb-3">Purpose</h2>
+                <p class="container text-muted text-justify h4 mb-3">
+                <ol class="list-group">
+                    <li class="list-group-item lead">To develop an easy to use web based interface where customers can
+                        easily store and monitor their
+                        expenses.</li>
+                    <li class="list-group-item lead">Provide a visual representation of their expenditure.</li>
+                    <li class="list-group-item lead">As many businesses are shifting to online platforms, everyone needs
+                        a reliable system to store
+                        and monitor their expenses, stocks or any other asset. </li>
+                    <li class="list-group-item lead">Use user reviews and feedbacks to maintain and improve trust and
+                        loyalty</li>
+                </ol>
+                </p>
+                <h2 class="h2 mb-3">Technologies Used</h2>
+                <p class="container text-muted text-justify h4 mb-3">
+                <ol class="list-group list-group-flush col-md-5">
+                    <li class="list-group-item lead">HTML</li>
+                    <li class="list-group-item lead">CSS</li>
+                    <li class="list-group-item lead">JAVASCRIPT</li>
+                    <li class="list-group-item lead">CHARTJS</li>
+                    <li class="list-group-item lead">PYTHON</li>
+                    <li class="list-group-item lead">DJANGO</li>
+                    <li class="list-group-item lead">SQLITE</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    {%endblock%}

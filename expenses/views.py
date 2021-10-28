@@ -24,7 +24,6 @@ def search_expenses(request):
 
 @login_required(login_url='/authentication/login')
 def index(request):
-    categories = Category.objects.all()
     expenses = Expense.objects.filter(owner=request.user)
     paginator = Paginator(expenses, 5)
     page_number = request.GET.get('page')
@@ -151,6 +150,7 @@ def expense_date_summary(request):
     def get_date(expense):
         return expense.date
     date_list = list(set(map(get_date, expenses)))
+    date_list.sort()
 
     def get_expense_date_amount(d):
         amount = 0

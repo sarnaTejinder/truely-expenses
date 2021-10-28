@@ -4,12 +4,49 @@
 User Details
 {% endblock %}
 {% block content %}
-
-
-<div class="card">
-    <div class="card-body">
-    User Details
-    <p>{{user}}</p>
+<div class="container mt-4 mb-4">
+  <div class="row">
+    <div class="col-md-10">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="/">Expenses</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">
+            User Details
+          </li>
+        </ol>
+      </nav>
     </div>
+
   </div>
+
+<div class="container">
+<div class="row mt-4">
+        <div class="col-md-6">
+             <h3 class = "h3">User Details</h3>
+                <span class = "username lead">
+                <label class="form-label">Username</label> 
+                <input type = "text " class = "px-md-2 form-control" disabled value="{{user.username}}">
+                </span>
+                <span class = "email lead mt-5">
+                <label class="form-label">Email</label> 
+                <input type = "text" class="px-md-2 form-control" disabled value="{{user.email}}">
+                </span>
+                <form action='/extras/settheme/' method = 'post' class="form mt-3">
+                  {% csrf_token %}
+                <div class ="form-group ">
+                  <label class="form-label lead">Theme</label>
+                  <select name="theme" class="form-control col-md-4 mb-3" id="themeSelect">
+                    <option value="0" class="light-theme">Light</option>
+                    <option value="1" class="dark-theme">Dark</option>
+                  </select>
+                  <input class="btn btn-primary btn-lg" type = "submit" value = "SAVE">
+                  <div>
+                </form>
+                </div>
+  </div>
+</div>
+
+<script src="{% static 'js/userForm.js'%}"></script>
 {%endblock%}

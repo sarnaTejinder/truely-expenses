@@ -28,11 +28,26 @@ Summary
   </div>
 
  <div class="row">
-<div class="col-md-8">
- <canvas id="myChart" width="400" height="400"></canvas>
-    </div><div class="col-md-4">
-    </div>
+<div class="col-md-8  ml-5">
+  <p class="d-flex flex-row justify-content-between">
+    <span>
+  <label for="type" class="form-label">Type of Chart:</label>
+  <select name="type" id="chartType" class="form-select">
+    <option selected value = "0">Doughnut</option>
+    <option value="1">Line</option>
+  </select>
+</span>
+  <span>
+  <label for="cat" class="form-label">Category:</label>
+  <select name="cat" id="catType" class="form-select">
+    <option selected value = "0">Expenses per Category</option>
+    <option value="1">Expenses per Date</option>
+  </select>
+  </span>
+  <button class="btn btn-primary renderChart">Render</button>
+</p>
 
+ <canvas id="myChart" width="400" height="400"></canvas>
  </div>
 </div>
 

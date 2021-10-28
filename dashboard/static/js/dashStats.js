@@ -1,4 +1,4 @@
-const renderChart = (data, labels, type) => {
+const renderChart = (data, labels, type,lineCol = "#d3d3d3") => {
     var ctx = document.getElementById("myChart").getContext("2d");
     var myChart = new Chart(ctx, {
         type: type,
@@ -12,7 +12,7 @@ const renderChart = (data, labels, type) => {
 
                     borderColor:
                         "rgba(177,156,217, 1)",
-
+                    
                     borderWidth: 1,
                 },
             ],
@@ -22,6 +22,10 @@ const renderChart = (data, labels, type) => {
                 display: true,
                 text: "Expenses per Date",
             },
+            scales: {
+                xAxes: [{gridLines: { color: lineCol }}],
+                yAxes: [{gridLines: { color: lineCol }}]
+            }
         },
     });
 };
@@ -41,3 +45,4 @@ const getChartData = (url, type) => {
 };
 
 document.onload = getChartData("/expense_date_summary", "line");
+Chart.defaults.global.defaultFontColor = "#000";

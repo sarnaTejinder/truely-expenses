@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 from validate_email import validate_email
 from django.contrib import messages
 from django.urls import reverse
+from extras.models import Preferences
 from django.contrib import auth
 
 # Create your views here.
@@ -59,6 +60,8 @@ class RegistrationView(View):
                 user.set_password(password)
                 user.is_active = True
                 user.save()
+                pref = Preferences.objects.create(owner = user,theme = False)
+                pref.save()
                 messages.success(request, 'Account successfully created')
                 return render(request, 'authentication/register.html')
 
@@ -96,3 +99,7 @@ class LogoutView(View):
         auth.logout(request)
         messages.success(request, 'You have been logged out')
         return redirect('login')
+
+
+
+

@@ -9,3 +9,7 @@
 .expense:nth-of-type(2n){
     background-color: #ebeef1;
 }
+
+#myChart{
+    border-radius: 10px;
+}

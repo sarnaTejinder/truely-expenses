@@ -1,4 +1,4 @@
-const renderChart = (data, labels,type) => {
+let renderDough = (data, labels,type) => {
     var ctx = document.getElementById("myChart").getContext("2d");
     var myChart = new Chart(ctx, {
       type: type,
@@ -37,19 +37,71 @@ const renderChart = (data, labels,type) => {
     });
   };
   
-  const getChartData = (url,type) => {
+  let renderLine = (data, labels, type) => {
+    var ctx = document.getElementById("myChart").getContext("2d");
+    var myChart = new Chart(ctx, {
+        type: type,
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: "Expense",
+                    data: data,
+                    backgroundColor: "rgba(177,156,217, 0.6)",
+
+                    borderColor:
+                        "rgba(177,156,217, 1)",
+
+                    borderWidth: 1,
+                },
+            ],
+        },
+        options: {
+            title: {
+                display: true,
+                text: "Expenses per Date",
+            },
+        },
+    });
+};
+
+let getChartData = (url, type ,value) => {
+
     fetch(url)
-      .then((res) => res.json())
-      .then((results) => {
-        const category_data = results.expense_category_data;
-        const [labels, data] = [
-          Object.keys(category_data),
-          Object.values(category_data),
-        ];
+        .then((res) => res.json())
+        .then((results) => {
+          let data
+          if(value == 0){
+             data = results.expense_category_data;
+          }
+          else
+            data = results.expense_date_data;
+      
+            const [labels, dataa] = [
+                Object.keys(data),
+                Object.values(data),
+            ];
+            if(type == 0)
+            renderDough(dataa, labels, "doughnut");
+            else
+            renderLine(dataa, labels, "line");
+        });
+};
+
+  document.onload = getChartData("/expense_category_summary",0,0);
+
+  const type = document.querySelector("#chartType")
+  const cat = document.querySelector("#catType")
+  const arr = ['/expense_category_summary','/expense_date_summary']
+  const btn1 = document.querySelector(".renderChart")
+
+  btn1.addEventListener('click',()=>{
+    const canvas = document.getElementById("myChart")
+    const context = canvas.getContext('2d');
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    getChartData(arr[cat.value],type.value,cat.value)
+    // console.log(arr[cat.value],type.value,cat.value)
+  })
   
-        renderChart(data, labels,type);
-      });
-  };
-  
-  document.onload = getChartData("/expense_category_summary","doughnut");
+
   
