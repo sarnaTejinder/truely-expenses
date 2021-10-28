@@ -51,4 +51,4 @@ def setTheme(request):
             res.save()
             print(request.POST['theme'])
             print(res.theme)
-            return render(request, 'extras/user-details.html')
+            return render(request, 'extras/user-details.html',{'current':'user/'})
