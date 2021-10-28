@@ -1,3 +1,4 @@
+from typing import final
 from django.db.models.expressions import F
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
@@ -38,13 +39,16 @@ def setTheme(request):
         return redirect(request, 'user-details')
 
     if request.method == 'POST':
-        res = Preferences.objects.get(owner = request.user)
-        
-        if(request.POST['theme'] == '0'):
-            res.theme = False
-        else:
-            res.theme = True
-        res.save()
-        print(request.POST['theme'])
-        print(res.theme)
-        return render(request, 'extras/user-details.html')
+        try: 
+            res = Preferences.objects.get(owner = request.user)
+        except:
+            res = Preferences.objects.create(owner = request.user)
+        finally:
+            if(request.POST['theme'] == '0'):
+                res.theme = False
+            else:
+                res.theme = True
+            res.save()
+            print(request.POST['theme'])
+            print(res.theme)
+            return render(request, 'extras/user-details.html')
