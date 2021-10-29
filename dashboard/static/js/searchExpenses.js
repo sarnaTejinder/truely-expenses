@@ -3,6 +3,7 @@ const searchField = document.querySelector("#searchField");
 const tableOutput = document.querySelector(".table-output");
 const appTable = document.querySelector(".app-table");
 const paginationContainer = document.querySelector(".pagination-container");
+if(tableOutput!=null){
 tableOutput.style.display = "none";
 const noResults = document.querySelector(".no-results");
 const tbody = document.querySelector(".table-body");
@@ -45,3 +46,4 @@ searchField.addEventListener("keyup", (e) => {
     paginationContainer.style.display = "block";
   }
 });
+}
