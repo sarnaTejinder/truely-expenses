@@ -96,11 +96,9 @@ let getChartData = (url, type ,value) => {
   const btn1 = document.querySelector(".renderChart")
 
   btn1.addEventListener('click',()=>{
-    const canvas = document.getElementById("myChart")
-    const context = canvas.getContext('2d');
-    context.clearRect(0, 0, canvas.width, canvas.height);
+    document.getElementById("myChart").remove()
+    document.getElementById("chart-container").append('<canvas id="myChart" width="400" height="400"><canvas>')
     getChartData(arr[cat.value],type.value,cat.value)
-    // console.log(arr[cat.value],type.value,cat.value)
   })
   
 
