@@ -97,7 +97,7 @@ let getChartData = (url, type ,value) => {
 
   btn1.addEventListener('click',()=>{
     document.getElementById("myChart").remove()
-    document.getElementById("chart-container").append('<canvas id="myChart" width="400" height="400"><canvas>')
+    document.getElementById("chart-container").innerHTML = '<canvas id="myChart" width="400" height="400"></canvas>'
     getChartData(arr[cat.value],type.value,cat.value)
   })
   

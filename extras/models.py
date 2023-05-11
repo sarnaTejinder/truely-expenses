@@ -7,7 +7,7 @@ class Preferences(models.Model):
     theme = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.theme
+        return str(self.theme)
 
     class Meta:
         verbose_name_plural = 'Preferences'
